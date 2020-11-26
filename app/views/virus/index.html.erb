@@ -14,6 +14,9 @@
           <button type="button" class="btn lvl-indicator">9</button>
           <button type="button" class="btn lvl-indicator">10</button>
         </div>
+        <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+          <h3 class="card-title">Eradicate the virus with your click</h3>
+        </div>
       </div>
       <div id="virus" class="justify-content-center text-center">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 271 281" width="271" height="281">
@@ -56,15 +59,14 @@
     <div class="col card-columns d-flex justify-content-center">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Eradicate the virus with your click</h5>
-          <p class="card-text">How many times clicked:</p>
-          <div id="counter" class="btn"><%=@virus_hp%></div>
+          <h5 class="card-title">How many times clicked:</h5>
+          <div id="counter" class="card-text"><%=@virus_hp%></div>
         </div>
       </div>
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title seconds">Seconds</h5>
-          <p class="card-text seconds" id="seconds">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h5 class="card-title">Seconds</h5>
+          <span class="card-text minutes" id="minutes">00</span>:<span class="card-text seconds" id="seconds">00</span>
         </div>
       </div>
     </div>
@@ -81,46 +83,63 @@
 </div>
 </div>
 <script>
+  var firstClickTime = null;
+  var lastClickTime = null;
+  var spendedTime = 0;
 
-var firstClickTime = null;
-var lastClickTime = null;
-var spendedTime = 0;
-
-  $("#virus").click(function(event) {
-    if (firstClickTime == null) {
-        firstClickTime = event.timeStamp;
-    }
-
-    $("#counter").html(function(i, val) { 
-      if (val>0) {
-
-        if (val==1) {
-          lastClickTime = event.timeStamp;
-          spendedTime = lastClickTime - firstClickTime;
-          $("#record_score").val(spendedTime.toFixed(3));
-          $('.app .row').hide();
-          $('#send_score_form').show();
-        }
-
-        return val-1;
-      }
-    });
-  });
+  var secondCounter = 0;
+  var clickCounter = $('#counter').html()
   
-  $(document).ready(function (e) {
-    // var startAngle = 0;
-    var startAngle = 0;
-    var unit = 215;
-    var timer_started = false;
-    $('#send_score_form').hide();
-    // var animate = function () {
-    //     var rad = startAngle * (Math.PI / 180);
-    //     $('#circle').css({
-    //         left: 250 + Math.cos(rad) * unit + 'px',
-    //         top: unit * (1 - Math.sin(rad)) + 'px'
-    //     });
-    //     startAngle--;
-    // }
-    // var timer = setInterval(animate, 10);
-  });
+  function pad(val) {
+    var valString = val + "";
+    if (valString.length < 2) {
+      return "0" + valString;
+    } else {
+      return valString;
+    }
+  }
+  
+  let interval = setInterval(updateTime, 1000);
+
+  function updateTime(){
+    if($('#counter').html() > 0) {
+      // console.log('update', $('#counter').html() > 0)
+      $("#seconds").html(pad(++secondCounter%60));
+      $("#minutes").html(pad(parseInt(secondCounter/60,10)));
+    } 
+    return clearInterval(interval)
+  }
+  
+  $('#virus').one('click', function(e) {
+    // console.log('only once')
+    setInterval(updateTime, 1000);
+  })
+  
+    $("#virus").click(function(event) {
+      if (firstClickTime == null) {
+          firstClickTime = event.timeStamp;
+      }
+  
+      $("#counter").html(function(i, val) {
+  
+        if (val>0) {
+          if (val==1) {
+            lastClickTime = event.timeStamp;
+            spendedTime = lastClickTime - firstClickTime;
+            $("#record_score").val(spendedTime.toFixed(3));
+            $('.app .row').hide();
+            $('#send_score_form').show();
+          }
+          return val-1;
+        }
+      });
+    });
+  
+    $(document).ready(function (e) {
+      // var startAngle = 0;
+      var startAngle = 0;
+      var unit = 215;
+      var timer_started = false;
+      $('#send_score_form').hide();  
+    });
 </script>
