@@ -1,9 +1,21 @@
 <div class="app container">
   <div class="row">
-    <div class="left_bar col-4">
-      col-md-6 col-xl-4
-      <div id="virus" class="virus ">
-        <div id="circle"></div>
+    <div class="col">
+      <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+          <button type="button" class="btn lvl-indicator">1</button>
+          <button type="button" class="btn lvl-indicator">2</button>
+          <button type="button" class="btn lvl-indicator">3</button>
+          <button type="button" class="btn lvl-indicator">4</button>
+          <button type="button" class="btn lvl-indicator">5</button>
+          <button type="button" class="btn lvl-indicator">6</button>
+          <button type="button" class="btn lvl-indicator">7</button>
+          <button type="button" class="btn lvl-indicator">8</button>
+          <button type="button" class="btn lvl-indicator">9</button>
+          <button type="button" class="btn lvl-indicator">10</button>
+        </div>
+      </div>
+      <div id="virus" class="justify-content-center text-center">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 271 281" width="271" height="281">
           <style>
             tspan { white-space:pre }
@@ -38,6 +50,10 @@
           </g>
         </svg>
       </div>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col card-columns d-flex justify-content-center">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Eradicate the virus with your click</h5>
@@ -45,64 +61,39 @@
           <div id="counter" class="btn"><%=@virus_hp%></div>
         </div>
       </div>
-    </div>
-    <div class="middle_bar col ">
-      col-md-6 col-xl-8
-      <p>Your perks (stuff added from right bar)</p>
       <div class="card">
-        <div class="card-body text-center">
-          <h5 class="card-title">(COUNT: EXAMPLE "2x") SYRINGE (ICON HERE)</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Did you know?</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="https://sverigesradio.se/musikhjalpen" class="card-link">Read more..</a>
-          <a href="https://twitter.com/hashtag/mh20" class="card-link">#mh20</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <h5 class="card-title">(COUNT: EXAMPLE "2x") NURSE (ICON HERE)</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Did you know?</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="https://sverigesradio.se/musikhjalpen" class="card-link">Read more..</a>
-          <a href="https://twitter.com/hashtag/mh20" class="card-link">#mh20</a>
-        </div>
-      </div>
-      <%# Clicking one of Store items should generate one of these cards and update a count inside? %>
-      <div class="card">
-        <div class="card-body text-center">
-          <h5 class="card-title">(COUNT: EXAMPLE "2x") Hospital (ICON HERE)</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Did you know?</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="https://sverigesradio.se/musikhjalpen" class="card-link">Read more..</a>
-          <a href="https://twitter.com/hashtag/mh20" class="card-link">#mh20</a>
-        </div>
-      </div>
-    </div>
-    <div class="right_bar col">
-      col-md-6 col-xl-4 order-4 order-xl-3
-      <div class="card">
-        <div class="card-body text-center">
-          <h5 class="card-title">(COUNT: EXAMPLE "2x") SYRINGE (ICON HERE)</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Did you know?</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="https://sverigesradio.se/musikhjalpen" class="card-link">Read more..</a>
-          <a href="https://twitter.com/hashtag/mh20" class="card-link">#mh20</a>
+        <div class="card-body">
+          <h5 class="card-title seconds">Seconds</h5>
+          <p class="card-text seconds" id="seconds">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
     </div>
   </div>
-  <div id='send_score_form'>
-    <%= simple_form_for Record.new do |f| %>
-      <%= f.input :username %>
-      <%= f.input :score, readonly: true %>
-      <%= f.input :level, input_html: { value: @level }, readonly: true, as: :hidden %>
-      <%= f.button :submit %>
-    <% end %>
-  </div>
+</div>
+</div>
+<div id='send_score_form'>
+  <%= simple_form_for Record.new do |f| %>
+    <%= f.input :username %>
+    <%= f.input :score, readonly: true %>
+    <%= f.input :level, input_html: { value: @level }, readonly: true, as: :hidden %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
 </div>
 <script>
   $("#virus").click(function() {
-    $("#counter").html(function(i, val) { return val-1 });
+    const time = new Date()
+    const seconds = time.getSeconds()
+    //
+  
+    $("#counter").html(function(i, val) {
+        return val-1
+        if (val <= 0) {
+  
+        }
+      });
+  
+  
   });
   
   $(document).ready(function (e) {

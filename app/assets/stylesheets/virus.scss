@@ -13,35 +13,16 @@ $mh_dark_red: #720d0f;
 
 
 
-.app {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.left_bar{
-  background:#d87093;
-  flex: 0 0 35%;
-}
-.middle_bar{
-  background: palegoldenrod;
-  flex-grow: 1;
-}
-.right_bar{
-  background: paleturquoise;
-  flex: 0 0 25%;
+body {
+  background: rgb(15,129,108);
+  background: linear-gradient(133deg, rgba(15,129,108,1) 0%, rgba(1,176,142,1) 40%, rgba(19,153,114,1) 79%, rgba(15,129,108,1) 100%);
+  
 }
 
 .virus {
   background-color: $mh_hover_green;
   padding: 0;
   margin: 0;
-
-  background: 
-    radial-gradient(circle, transparent 20%, darken($mh_heart_green, 10) 20%, darken($mh_heart_green, 10) 80%, transparent 80%, transparent),
-    radial-gradient(circle, transparent 20%, darken($mh_heart_green, 10) 20%, darken($mh_heart_green, 10) 80%, transparent 80%, transparent) 50px 50px;
-    // linear-gradient(darken($mh_red, 33) 8px, transparent 8px) 0 -4px,
-    // linear-gradient(90deg, darken($mh_red, 33) 8px, transparent 8px) -4px 0;
   background-color: darken($mh_heart_green, 10);
 }
 
@@ -49,15 +30,15 @@ svg {
   border-radius: 20px;
   padding: 24px;
   transition: ease-in .2s;
-  width: 200px;
+  // width: 200px;
   margin-bottom: 48px;
   max-width: 100%;
 }
 
-.virus svg:hover {
+svg:hover {
   transform: scale(1.03);
 }
-.virus svg:active {
+svg:active {
   transition: .1s;
   transform: scale(0.97);
 }
@@ -72,4 +53,8 @@ svg {
   // position: absolute;
   position: absolute;
 
+}
+
+.lvl-indicator {
+  background: lighten($mh_red, 10) !important;
 }
