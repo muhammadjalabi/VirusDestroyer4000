@@ -98,6 +98,8 @@ var spendedTime = 0;
           lastClickTime = event.timeStamp;
           spendedTime = lastClickTime - firstClickTime;
           $("#record_score").val(spendedTime.toFixed(3));
+          $('.app .row').hide();
+          $('#send_score_form').show();
         }
 
         return val-1;
@@ -110,7 +112,7 @@ var spendedTime = 0;
     var startAngle = 0;
     var unit = 215;
     var timer_started = false;
-  
+    $('#send_score_form').hide();
     // var animate = function () {
     //     var rad = startAngle * (Math.PI / 180);
     //     $('#circle').css({
