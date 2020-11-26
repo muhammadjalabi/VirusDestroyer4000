@@ -14,3 +14,7 @@
     </tr>
   <% end %>
 </table>
+
+<% if @record.present? %>
+  <%= link_to "Donate", controller: "donation", action: "index", value: @record.score %>
+<% end %>

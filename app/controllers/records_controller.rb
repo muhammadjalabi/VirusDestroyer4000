@@ -1,13 +1,13 @@
 class RecordsController < ApplicationController
   def index
-    @records = Record.where(level: params[:level] || 1).order(score: :desc).limit(100)
+    @records = Record.where(level: params[:level] || 1).order(score: :asc).limit(25)
+    @record = Record.find_by(id: params[:id])
   end
 
   def create
-    puts params
     record = Record.create(create_params)
 
-    redirect_to records_path(level: record.level)
+    redirect_to records_path(level: record.level, id: record.id)
   end
 
   private
