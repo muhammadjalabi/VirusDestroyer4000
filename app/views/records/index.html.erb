@@ -1,18 +1,22 @@
-<table>
-  <tr>
-    <th> # </th>
-    <th> Username </th>
-    <th> Score </th>
-    <th> Date </th>
-  </tr>
-  <% @records.each_with_index do |r, i| %>
+<table class="styled-table">
+  <thead>
     <tr>
-      <td> <%= i + 1 %> </td>
-      <td> <%= r.username %> </td>
-      <td> <%= r.score %> </td>
-      <td> <%= r.created_at %> </td>
+      <th> # </th>
+      <th> Username </th>
+      <th> Score </th>
+      <th> Date </th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @records.each_with_index do |r, i| %>
+      <tr>
+        <td> <%= i + 1 %> </td>
+        <td> <%= r.username %> </td>
+        <td> <%= r.score %> </td>
+        <td> <%= r.created_at %> </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <% if @record.present? %>
