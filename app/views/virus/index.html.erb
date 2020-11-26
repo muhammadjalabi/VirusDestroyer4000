@@ -81,6 +81,7 @@
 </div>
 </div>
 <script>
+<<<<<<< HEAD
   $("#virus").click(function() {
     const time = new Date()
     const seconds = time.getSeconds()
@@ -94,6 +95,30 @@
       });
   
   
+=======
+
+var firstClickTime = null;
+var lastClickTime = null;
+var spendedTime = 0;
+
+  $("#virus").click(function(event) {
+    if (firstClickTime == null) {
+        firstClickTime = event.timeStamp;
+    }
+
+    $("#counter").html(function(i, val) { 
+      if (val>0) {
+
+        if (val==1) {
+          lastClickTime = event.timeStamp;
+          spendedTime = lastClickTime - firstClickTime;
+          $("#record_score").val(spendedTime.toFixed(3));
+        }
+
+        return val-1;
+      }
+    });
+>>>>>>> d75582747b499ad5c34aea47541452dc6cfbe36a
   });
   
   $(document).ready(function (e) {

@@ -12,7 +12,7 @@ class VirusController < ApplicationController
   }
 
   def index
-    @level = params[:level].to_i || 1
+    @level = params[:level].to_i.zero? ? 1 : params[:level].to_i
     @virus_hp = LEVELS[@level]
   end
 end
