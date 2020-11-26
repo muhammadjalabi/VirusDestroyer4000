@@ -116,8 +116,8 @@ var spendedTime = 0;
 
         if (val==1) {
           lastClickTime = event.timeStamp;
-          spendedTime = (lastClickTime - firstClickTime)/1000;
-          $("#record_score").val(spendedTime);
+          spendedTime = lastClickTime - firstClickTime;
+          $("#record_score").val(spendedTime.toFixed(3));
         }
 
         return val-1;
