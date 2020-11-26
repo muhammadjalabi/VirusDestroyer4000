@@ -1,0 +1,11 @@
+Here will be virus!
+
+<div id="counter">0</div>
+
+<div id="rectangle"></div>
+
+<script>
+  $("#rectangle").click(function() {
+    $("#counter" ).html(function(i, val) { return +val+1 });
+  });
+</script>
