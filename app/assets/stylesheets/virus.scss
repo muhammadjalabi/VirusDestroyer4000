@@ -2,9 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//Theme colors of Musikhjälpen:
+$mh_green: #01b08e;
+$mh_hover_green: rgba(15,129,108,.3);
+$mh_dark_green: #0f816c;
+
+$mh_red: #de1917;
+$mh_dark_red: #720d0f;
+
 
 
 svg {
+  border-radius: 20px;
   padding: 24px;
   width: 200px;
   margin-bottom: 48px;
