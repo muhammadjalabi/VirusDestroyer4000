@@ -101,12 +101,27 @@
   </div>
 </div>
 <script>
-  $("#virus").click(function() {
+
+var firstClickTime = null;
+var lastClickTime = null;
+var spendedTime = 0;
+
+  $("#virus").click(function(event) {
+    if (firstClickTime == null) {
+        firstClickTime = event.timeStamp;
+    }
+
     $("#counter").html(function(i, val) { 
       if (val>0) {
-        return val-1 
+
+        if (val==1) {
+          lastClickTime = event.timeStamp;
+          spendedTime = (lastClickTime - firstClickTime)/1000;
+          $("#record_score").val(spendedTime);
+        }
+
+        return val-1;
       }
-      
     });
   });
   
