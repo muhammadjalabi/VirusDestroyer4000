@@ -102,7 +102,12 @@
 </div>
 <script>
   $("#virus").click(function() {
-    $("#counter").html(function(i, val) { return val-1 });
+    $("#counter").html(function(i, val) { 
+      if (val>0) {
+        return val-1 
+      }
+      
+    });
   });
   
   $(document).ready(function (e) {
