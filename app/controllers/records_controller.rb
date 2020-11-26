@@ -4,6 +4,7 @@ class RecordsController < ApplicationController
   end
 
   def create
+    puts params
     record = Record.create(create_params)
 
     redirect_to records_path(level: record.level)

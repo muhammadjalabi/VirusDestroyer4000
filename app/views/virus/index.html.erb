@@ -42,7 +42,7 @@
         <div class="card-body">
           <h5 class="card-title">Eradicate the virus with your click</h5>
           <p class="card-text">How many times clicked:</p>
-          <div id="counter" class="btn">0</div>
+          <div id="counter" class="btn"><%=@virus_hp%></div>
         </div>
       </div>
     </div>
@@ -94,21 +94,22 @@
   <div id='send_score_form'>
     <%= simple_form_for Record.new do |f| %>
       <%= f.input :username %>
-      <%= f.input :score %>
-      <%= f.input :level %>
+      <%= f.input :score, readonly: true %>
+      <%= f.input :level, input_html: { value: @level }, readonly: true, as: :hidden %>
       <%= f.button :submit %>
     <% end %>
   </div>
 </div>
 <script>
   $("#virus").click(function() {
-    $("#counter" ).html(function(i, val) { return +val+1 });
+    $("#counter").html(function(i, val) { return val-1 });
   });
   
   $(document).ready(function (e) {
     // var startAngle = 0;
     var startAngle = 0;
     var unit = 215;
+    var timer_started = false;
   
     // var animate = function () {
     //     var rad = startAngle * (Math.PI / 180);
