@@ -1,16 +1,30 @@
-<table>
-  <tr>
-    <th> # </th>
-    <th> Username </th>
-    <th> Score </th>
-    <th> Date </th>
-  </tr>
-  <% @records.each_with_index do |r, i| %>
+<table class="styled-table">
+  <thead>
     <tr>
-      <td> <%= i + 1 %> </td>
-      <td> <%= r.username %> </td>
-      <td> <%= r.score %> </td>
-      <td> <%= r.created_at %> </td>
+      <th> <span id="easter_url">#</span> </th>
+      <th> Username </th>
+      <th> Score </th>
+      <th> Date </th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @records.each_with_index do |r, i| %>
+      <tr>
+        <td> <%= i + 1 %> </td>
+        <td> <%= r.username %> </td>
+        <td> <%= r.score %> </td>
+        <td> <%= r.created_at %> </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+
+<% if @record.present? %>
+  <%= link_to "Donate", donation_index_path(value: @record.score), class: "btn" %>
+<% end %>
+
+<script type="text/javascript">
+  $("#easter_url").click(function(event) {
+    window.open("https://mondido.com", '_blank');
+  });
+</script>

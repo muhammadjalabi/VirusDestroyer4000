@@ -3,16 +3,9 @@
     <div class="col">
       <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
-          <button type="button" class="btn lvl-indicator">1</button>
-          <button type="button" class="btn lvl-indicator">2</button>
-          <button type="button" class="btn lvl-indicator">3</button>
-          <button type="button" class="btn lvl-indicator">4</button>
-          <button type="button" class="btn lvl-indicator">5</button>
-          <button type="button" class="btn lvl-indicator">6</button>
-          <button type="button" class="btn lvl-indicator">7</button>
-          <button type="button" class="btn lvl-indicator">8</button>
-          <button type="button" class="btn lvl-indicator">9</button>
-          <button type="button" class="btn lvl-indicator">10</button>
+          <% 9.times do |i| %>
+            <%= link_to "#{i + 1}", virus_index_path(level: i + 1) , class: "btn lvl-indicator"%>
+          <% end %>
         </div>
         <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
           <h3 class="card-title">Eradicate the virus with your click</h3>
