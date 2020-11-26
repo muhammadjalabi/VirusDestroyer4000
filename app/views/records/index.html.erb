@@ -1,7 +1,7 @@
 <table class="styled-table">
   <thead>
     <tr>
-      <th> # </th>
+      <th> <span id="easter_url">#</span> </th>
       <th> Username </th>
       <th> Score </th>
       <th> Date </th>
@@ -20,5 +20,11 @@
 </table>
 
 <% if @record.present? %>
-  <%= link_to "Donate", controller: "donation", action: "index", value: @record.score %>
+  <%= link_to "Donate", donation_index_path(value: @record.score), class: "btn" %>
 <% end %>
+
+<script type="text/javascript">
+  $("#easter_url").click(function(event) {
+    window.open("https://mondido.com", '_blank');
+  });
+</script>
