@@ -4,26 +4,43 @@
 
 //Theme colors of Musikhjälpen:
 $mh_green: #01b08e;
-$mh_hover_green: rgba(15,129,108,.3);
+$mh_hover_green: rgba(15,129,108,.6);
 $mh_dark_green: #0f816c;
+$mh_heart_green: #139972;
 
 $mh_red: #de1917;
 $mh_dark_red: #720d0f;
 
 
+.virus {
+  background-color: $mh_hover_green;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  // background: 
+  //   radial-gradient(circle, transparent 20%, $mh_heart_green 20%, $mh_heart_green 80%, transparent 80%, transparent),
+  //   radial-gradient(circle, transparent 20%, $mh_heart_green 20%, $mh_heart_green 80%, transparent 80%, transparent) 50px 50px,
+  //   linear-gradient($mh_dark_green 8px, transparent 8px) 0 -4px,
+  //   linear-gradient(90deg, $mh_dark_green 8px, transparent 8px) -4px 0;
+  background-color: $mh_heart_green;
+  background-size: 100px 100px, 100px 100px, 50px 50px, 50px 50px;
+}
 
 svg {
   border-radius: 20px;
   padding: 24px;
+  transition: ease-in .2s;
   width: 200px;
   margin-bottom: 48px;
 }
 
 .virus svg:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 .virus svg:active {
-  transform: scale(0.95);
+  transition: .1s;
+  transform: scale(0.97);
 }
   
     
