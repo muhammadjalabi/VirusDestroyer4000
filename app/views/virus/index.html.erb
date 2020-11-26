@@ -91,6 +91,14 @@
       </div>
     </div>
   </div>
+  <div id='send_score_form'>
+    <%= simple_form_for Record.new do |f| %>
+      <%= f.input :username %>
+      <%= f.input :score %>
+      <%= f.input :level %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
 </div>
 <script>
   $("#virus").click(function() {
