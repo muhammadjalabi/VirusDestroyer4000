@@ -1,27 +1,37 @@
-<table class="styled-table">
-  <thead>
-    <tr>
-      <th> <span id="easter_url">#</span> </th>
-      <th> Username </th>
-      <th> Score </th>
-      <th> Date </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @records.each_with_index do |r, i| %>
-      <tr>
-        <td> <%= i + 1 %> </td>
-        <td> <%= r.username %> </td>
-        <td> <%= r.score %> </td>
-        <td> <%= r.created_at %> </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="main">
+  <div id="table">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th> <span id="easter_url">#</span> </th>
+          <th> Username </th>
+          <th> Score </th>
+          <th> Date </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @records.each_with_index do |r, i| %>
+          <tr>
+            <td> <%= i + 1 %> </td>
+            <td> <%= r.username %> </td>
+            <td> <%= r.score %> </td>
+            <td> <%= r.created_at %> </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
 
-<% if @record.present? %>
-  <%= link_to "Donate", donation_index_path(value: @record.score), class: "btn" %>
-<% end %>
+  <div id="links">
+    <% if @record.present? %>
+      <%= link_to "Donate", controller: "donation", action: "index", value: @record.score %>
+      <%= link_to "Donate", donation_index_path(value: @record.score), class: "btn" %>
+    <% end %>
+    <%= link_to "Play again this Game", controller: "virus", action: "index" %>    
+  </div>
+</div>
+
+
 
 <script type="text/javascript">
   $("#easter_url").click(function(event) {
