@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col card card-columns d-flex justify-content-center">
-      <h1 class="card-title  d-flex justify-content-center ">Scoreboard: </h1>
-      <table class="styled-table table-hover ">
+      <h1 class="card-title d-flex justify-content-center ">Scoreboard: </h1>
+      <table class="styled-table table-hover">
         <thead>
           <tr>
             <th> <span id="easter_url">#</span> </th>
@@ -23,15 +23,15 @@
         </tbody>
       </table>
       <% if @record.present? %>
-        <div class="card-body ">
-          <h5 class="card-title d-flex justify-content-center">Why Virus Killer exists</h5>
-          <p class="card-text  d-flex justify-content-center ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <div class="card-body  d-flex justify-content-center ">
-          <a href="https://bossan.musikhjalpen.se/mondido" class="btn btn-outline-primary" target="_blank" style="margin: 4px 8px;">Pledge!</a>
-          <%= link_to "Kill more viruses!", root_path, class: "btn btn-primary", style: 'margin: 4px 8px' %>
-        </div>
       <% end %>
+      <div class="card-body ">
+        <h5 class="card-title d-flex justify-content-center">Why Virus Killer exists</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      <div class="card-body  d-flex justify-content-center ">
+        <a href="https://bossan.musikhjalpen.se/mondido" class="btn btn-outline-primary" target="_blank" style="margin: 4px 8px;">Pledge!</a>
+        <%= link_to "Kill more viruses!", root_path, class: "btn btn-primary", style: 'margin: 4px 8px' %>
+      </div>
     </div>
   </div>
 </div>
