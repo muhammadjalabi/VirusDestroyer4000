@@ -156,7 +156,7 @@
     let interval = setInterval(updateTime, 1000);
     
     function updateTime(){
-      if($('#counter').html() > 0) {
+      if($('#counter').html() > 0 && firstClickTime != null) {
         // console.log('update', $('#counter').html() > 0)
         $("#seconds").html(pad(++secondCounter%60));
         $("#minutes").html(pad(parseInt(secondCounter/60,10)));
