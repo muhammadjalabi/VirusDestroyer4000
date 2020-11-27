@@ -27,4 +27,17 @@
   $("#easter_url").click(function(event) {
     window.open("https://mondido.com", '_blank');
   });
+
+  var pressed = []
+  var secretCode = 'mondido';
+  var konamiCode = '38,38,40,40,37,39,37,39,66,65';
+  var secretCode3 = 'musikhjälpen';
+  window.addEventListener('keyup', (e) => {
+    pressed.push(e.key.toLowerCase())
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length)
+    if(pressed.join('').includes(secretCode)) {
+      console.log('Correct!', pressed)
+    }
+  })
+
 </script>
