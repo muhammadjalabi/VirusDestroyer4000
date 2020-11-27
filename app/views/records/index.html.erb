@@ -24,6 +24,12 @@
     </div>
   </div>
   <% if @record.present? %>
+  <a href="https://bossan.musikhjalpen.se/mondido" class="btn btn-primary" target="_blank">
+  Pledge!
+  </a>
+  <button class="btn btn-primary">
+  Kill more viruses! 
+  </button>
     <%= link_to "Donate", donation_index_path(value: @record.score), class: "btn btn-primary" %>
   <% end %>
 </div>
