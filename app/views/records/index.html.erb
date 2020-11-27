@@ -35,6 +35,8 @@
     </div>
   </div>
 </div>
+<audio id="easter" src="sounds/wow.wav"></audio>
+
 <script type="text/javascript">
   $("#easter_url").click(function(event) {
     window.open("https://mondido.com", '_blank');
@@ -42,13 +44,20 @@
   
   var pressed = []
   var secretCode = 'mondido';
-  var konamiCode = '38,38,40,40,37,39,37,39,66,65';
+  var otherPressed = []
+  // var konamiCode = '38,38,40,40,37,39,37,39,66,65';
   var secretCode3 = 'musikhjälpen';
+  var audio = document.getElementById('easter')
   window.addEventListener('keyup', (e) => {
     pressed.push(e.key.toLowerCase())
+    otherPressed.push(e.key.toLowerCase())
+    otherPressed.splice(-secretCode3.length - 1, otherPressed.length - secretCode3.length)
     pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length)
-    if(pressed.join('').includes(secretCode)) {
-      console.log('Correct!', pressed)
+    if(pressed.join('').includes(secretCode) || otherPressed.join('').includes(secretCode3)) {
+      audio.currentTime = 0 //rewinds to beginning for spamming
+      audio.play()
     }
   })
+
+
 </script>
