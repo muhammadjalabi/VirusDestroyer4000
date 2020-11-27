@@ -7,6 +7,11 @@
             <h3 class="card-title main_card_title">Eradicate the virus with your click</h3>
           </div>
         </div>
+
+        <div>
+          <%= link_to "See my records", controller: "records", action: "index" %>    
+        </div>
+
       </div>
     </div>
   </div>
@@ -57,7 +62,7 @@
             Level: 
           </a>
           <% 9.times do |i| %>
-            <%= link_to "#{i + 1}", virus_index_path(level: i + 1) , class: "btn lvl-indicator"%>
+            <%= link_to "#{i + 1}", virus_index_path(level: i + 1) , class: "btn lvl-indicator", id:"lvl-#{i+1}" %>
           <% end %>
         </div>
       </div>
@@ -137,6 +142,7 @@
   var firstClickTime = null;
   var lastClickTime = null;
   var spendedTime = 0;
+  var level = <%=@level%>;
   
   var secondCounter = 0;
   var clickCounter = $('#counter').html()
@@ -192,5 +198,6 @@
       var unit = 215;
       var timer_started = false;
       $('#send_score_form').hide();
+      $('#lvl-'+level).addClass('lvl-active');
     });
 </script>

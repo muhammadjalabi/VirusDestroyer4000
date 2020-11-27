@@ -130,6 +130,12 @@ svg:active {
   transform: translate3d(200px, 200px, 0);
 }
 
+.lvl-active{
+  background-color: darken($mh_dark_red, 10)!important;  
+}
+
+
+
 
 
 .dyk_card{
