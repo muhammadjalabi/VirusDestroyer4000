@@ -24,7 +24,7 @@
 
 .styled-table tbody tr {
     border-bottom: 1px solid #dddddd;
-    color: #c3e0b8;
+    color: #0f816c;
 }
 
 .styled-table tbody tr:nth-of-type(even) {
@@ -32,9 +32,7 @@
 	color: #009879;
 }
 
-.styled-table tbody tr:nth-of-type(even):hover {
-	color: white;
-}
+
 
 .styled-table tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
