@@ -1,4 +1,6 @@
-<table class="styled-table">
+<div class="row">
+<div class="col card-columns d-flex justify-content-center">
+<table class="styled-table table-hover">
   <thead>
     <tr>
       <th> <span id="easter_url">#</span> </th>
@@ -18,9 +20,11 @@
     <% end %>
   </tbody>
 </table>
+</div>
+</div>
 
 <% if @record.present? %>
-  <%= link_to "Donate", donation_index_path(value: @record.score), class: "btn" %>
+  <%= link_to "Donate", donation_index_path(value: @record.score), class: "btn btn-primary" %>
 <% end %>
 
 <script type="text/javascript">

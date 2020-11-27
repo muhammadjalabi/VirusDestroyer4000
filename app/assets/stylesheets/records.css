@@ -32,10 +32,14 @@
 	color: #009879;
 }
 
+.styled-table tbody tr:nth-of-type(even):hover {
+	color: white;
+}
+
 .styled-table tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
 }
 
-.styled-table tbody tr:hover {
+/* .styled-table tbody tr:hover {
     font-weight: bold;
-}
+} */
