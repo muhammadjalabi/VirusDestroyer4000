@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
   def index
-    @records = Record.where(level: params[:level] || 1).order(score: :asc).limit(25)
+    @records = Record.where(level: params[:level] || 1).order(score: :asc).limit(20)
     @record = Record.find_by(id: params[:id])
   end
 
