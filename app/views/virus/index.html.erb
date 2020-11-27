@@ -1,14 +1,11 @@
 <div class="app container">
-  <div class="row">
+  <div class="row" style="margin-top: 48px;">
     <div class="col">
-      <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-        <div class="btn-group mr-2" role="group" aria-label="First group">
-          <% 9.times do |i| %>
-            <%= link_to "#{i + 1}", virus_index_path(level: i + 1) , class: "btn lvl-indicator"%>
-          <% end %>
-        </div>
-        <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-          <h3 class="card-title">Eradicate the virus with your click</h3>
+      <div class="btn-toolbar justify-content-center" >
+        <div class="card main_card">
+          <div class="card-body">
+            <h3 class="card-title main_card_title">Eradicate the virus with your click</h3>
+          </div>
         </div>
 
         <div>
@@ -16,6 +13,10 @@
         </div>
 
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       <div id="virus" class="justify-content-center text-center">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 271 281" width="271" height="281">
           <style>
@@ -53,38 +54,59 @@
       </div>
     </div>
   </div>
-  <div class="row ">
+  <div class="row">
+    <div class="col">
+      <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+          <a aria-expanded="false" class="btn btn-outline-secondary">
+            Level: 
+          </a>
+          <% 9.times do |i| %>
+            <%= link_to "#{i + 1}", virus_index_path(level: i + 1) , class: "btn lvl-indicator"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row " style="margin-top: 24px;">
     <div class="col card-columns d-flex justify-content-center">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">How many times clicked:</h5>
-          <div id="counter" class="card-text"><%=@virus_hp%></div>
+          <h5 class="card-title count_var_title">Virus particles left:</h5>
+          <div id="counter" class="card-text count_var"><%=@virus_hp%></div>
         </div>
       </div>
       <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Seconds</h5>
+        <div class="card-body ">
+          <h5 class="card-title count_var_title">Seconds elapsed:</h5>
+          <span class="count_var">
           <span class="card-text minutes" id="minutes">00</span>:<span class="card-text seconds" id="seconds">00</span>
+          </span>
+          
         </div>
       </div>
     </div>
   </div>
 </div>
 </div>
-<div id='send_score_form'>
-  <%= simple_form_for Record.new do |f| %>
-    <%= f.input :username %>
-    <%= f.input :score, readonly: true %>
-    <%= f.input :level, input_html: { value: @level }, readonly: true, as: :hidden %>
-    <%= f.button :submit %>
-  <% end %>
+<div class="row">
+  <div class="col card-columns d-flex justify-content-center">
+    <div id='send_score_form'>
+      <%= simple_form_for Record.new do |f| %>
+        <%= f.input :username %>
+        <%= f.input :score, readonly: true %>
+        <%= f.input :level, input_html: { value: @level }, readonly: true, as: :hidden %>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
 </div>
 </div>
 <script>
   var firstClickTime = null;
   var lastClickTime = null;
   var spendedTime = 0;
-
+  
   var secondCounter = 0;
   var clickCounter = $('#counter').html()
   
@@ -98,13 +120,13 @@
   }
   
   let interval = setInterval(updateTime, 1000);
-
+  
   function updateTime(){
     if($('#counter').html() > 0) {
       // console.log('update', $('#counter').html() > 0)
       $("#seconds").html(pad(++secondCounter%60));
       $("#minutes").html(pad(parseInt(secondCounter/60,10)));
-    } 
+    }
     return clearInterval(interval)
   }
   
@@ -138,6 +160,6 @@
       var startAngle = 0;
       var unit = 215;
       var timer_started = false;
-      $('#send_score_form').hide();  
+      $('#send_score_form').hide();
     });
 </script>
