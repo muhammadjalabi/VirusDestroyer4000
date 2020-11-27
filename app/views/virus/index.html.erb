@@ -66,20 +66,24 @@
   </div>
 </div>
 </div>
-<div id='send_score_form'>
-  <%= simple_form_for Record.new do |f| %>
-    <%= f.input :username %>
-    <%= f.input :score, readonly: true %>
-    <%= f.input :level, input_html: { value: @level }, readonly: true, as: :hidden %>
-    <%= f.button :submit %>
-  <% end %>
+<div class="row">
+  <div class="col card-columns d-flex justify-content-center">
+    <div id='send_score_form'>
+      <%= simple_form_for Record.new do |f| %>
+        <%= f.input :username %>
+        <%= f.input :score, readonly: true %>
+        <%= f.input :level, input_html: { value: @level }, readonly: true, as: :hidden %>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
 </div>
 </div>
 <script>
   var firstClickTime = null;
   var lastClickTime = null;
   var spendedTime = 0;
-
+  
   var secondCounter = 0;
   var clickCounter = $('#counter').html()
   
@@ -93,13 +97,13 @@
   }
   
   let interval = setInterval(updateTime, 1000);
-
+  
   function updateTime(){
     if($('#counter').html() > 0) {
       // console.log('update', $('#counter').html() > 0)
       $("#seconds").html(pad(++secondCounter%60));
       $("#minutes").html(pad(parseInt(secondCounter/60,10)));
-    } 
+    }
     return clearInterval(interval)
   }
   
@@ -133,6 +137,6 @@
       var startAngle = 0;
       var unit = 215;
       var timer_started = false;
-      $('#send_score_form').hide();  
+      $('#send_score_form').hide();
     });
 </script>

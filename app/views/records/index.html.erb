@@ -22,10 +22,10 @@
 </table>
 </div>
 </div>
-
 <% if @record.present? %>
   <%= link_to "Donate", donation_index_path(value: @record.score), class: "btn btn-primary" %>
 <% end %>
+
 
 <script type="text/javascript">
   $("#easter_url").click(function(event) {
