@@ -5,14 +5,11 @@
         <div class="card main_card">
           <div class="card-body">
             <h3 class="card-title main_card_title">Eradicate the virus with your click</h3>
+            <div class="highscore_records_link" style="text-align:center">
+                <%= link_to "See my records", controller: "records", action: "index"%>
+            </div>
           </div>
         </div>
-
-        <div>
-          <%= link_to "See my records", controller: "records", action: "index" %>    
-        </div>
-        
-
       </div>
     </div>
   </div>
@@ -115,90 +112,89 @@
       </div>
     </div>
   </div>
-   <div class="row mt-5 justify-content-center" style="background: transparent;">
-        <div class="card text-center dyk_card" style="width: 18rem;">
-          <div class="card-body ">
-            <h5 class="card-title">Did you know?</h5>
-            <p class="card-text">Musikhjälpen (Music Aid) is a Swedish week-long live radio and TV broadcast. The mission is to create awareness of and fundraise for a hidden catastrophe. Money raised is granted to international projects within the cause.</p>
-            <a href="https://sverigesradio.se/sida/artikel.aspx?programid=3946&artikel=7570007" class="btn " target="_blank">Read more...</a>
-          </div>
-        </div>
-        <div class="card text-center dyk_card" style="width: 18rem;">
-          <div class="card-body ">
-            <h5 class="card-title">Did you know?</h5>
-            <p class="card-text">Radiohjälpen is a self-governing foundation within the Swedish public service broadcasting group, namely the Swedish Public Service Television Company (SVT), the Swedish Radio (SR) and the Swedish Educational Broadcasting Company (UR). Since 1939, Radiohjälpen has conducted fundraising to change lives and alleviate suffering, in Sweden and abroad.</p>
-            <a href="https://www.radiohjalpen.se/about-us" class="btn " target="_blank">Read more...</a>
-          </div>
-        </div>
-        <div class="card text-center dyk_card" style="width: 18rem;">
-          <div class="card-body ">
-            <h5 class="card-title">Did you know?</h5>
-            <p class="card-text">Health is a human right. Yet at least half of the world's population lacks access to basic health care. Among the 7.4 million children and young people who died in 2019, the vast majority of the cases had been possible to prevent or treat. There is knowledge and resources to save millions of lives, but the reach isn't as great as it could be.</p>
-            <a href="https://sverigesradio.se/artikel/5376057" class="btn" target="_blank">Read more...</a>
-          </div>
-        </div>
+  <div class="row mt-5 justify-content-center" style="background: transparent;">
+    <div class="card text-center dyk_card" style="width: 18rem;">
+      <div class="card-body ">
+        <h5 class="card-title">Did you know?</h5>
+        <p class="card-text">Musikhjälpen (Music Aid) is a Swedish week-long live radio and TV broadcast. The mission is to create awareness of and fundraise for a hidden catastrophe. Money raised is granted to international projects within the cause.</p>
+        <a href="https://sverigesradio.se/sida/artikel.aspx?programid=3946&artikel=7570007" class="btn " target="_blank">Read more...</a>
+      </div>
     </div>
-
-<script>
-  var firstClickTime = null;
-  var lastClickTime = null;
-  var spendedTime = 0;
-  var level = <%=@level%>;
-  
-  var secondCounter = 0;
-  var clickCounter = $('#counter').html()
-  
-  function pad(val) {
-    var valString = val + "";
-    if (valString.length < 2) {
-      return "0" + valString;
-    } else {
-      return valString;
-    }
-  }
-  
-  let interval = setInterval(updateTime, 1000);
-  
-  function updateTime(){
-    if($('#counter').html() > 0) {
-      // console.log('update', $('#counter').html() > 0)
-      $("#seconds").html(pad(++secondCounter%60));
-      $("#minutes").html(pad(parseInt(secondCounter/60,10)));
-    }
-    return clearInterval(interval)
-  }
-  
-  $('#virus').one('click', function(e) {
-    // console.log('only once')
-    setInterval(updateTime, 1000);
-  })
-  
-    $("#virus").click(function(event) {
-      if (firstClickTime == null) {
-          firstClickTime = event.timeStamp;
+    <div class="card text-center dyk_card" style="width: 18rem;">
+      <div class="card-body ">
+        <h5 class="card-title">Did you know?</h5>
+        <p class="card-text">Radiohjälpen is a self-governing foundation within the Swedish public service broadcasting group, namely the Swedish Public Service Television Company (SVT), the Swedish Radio (SR) and the Swedish Educational Broadcasting Company (UR). Since 1939, Radiohjälpen has conducted fundraising to change lives and alleviate suffering, in Sweden and abroad.</p>
+        <a href="https://www.radiohjalpen.se/about-us" class="btn " target="_blank">Read more...</a>
+      </div>
+    </div>
+    <div class="card text-center dyk_card" style="width: 18rem;">
+      <div class="card-body ">
+        <h5 class="card-title">Did you know?</h5>
+        <p class="card-text">Health is a human right. Yet at least half of the world's population lacks access to basic health care. Among the 7.4 million children and young people who died in 2019, the vast majority of the cases had been possible to prevent or treat. There is knowledge and resources to save millions of lives, but the reach isn't as great as it could be.</p>
+        <a href="https://sverigesradio.se/artikel/5376057" class="btn" target="_blank">Read more...</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    var firstClickTime = null;
+    var lastClickTime = null;
+    var spendedTime = 0;
+    var level = <%=@level%>;
+    
+    var secondCounter = 0;
+    var clickCounter = $('#counter').html()
+    
+    function pad(val) {
+      var valString = val + "";
+      if (valString.length < 2) {
+        return "0" + valString;
+      } else {
+        return valString;
       }
-  
-      $("#counter").html(function(i, val) {
-  
-        if (val>0) {
-          if (val==1) {
-            lastClickTime = event.timeStamp;
-            spendedTime = lastClickTime - firstClickTime;
-            $("#record_score").val(spendedTime.toFixed(3));
-            $('.app .row').hide();
-            $('#send_score_form').show();
-          }
-          return val-1;
+    }
+    
+    let interval = setInterval(updateTime, 1000);
+    
+    function updateTime(){
+      if($('#counter').html() > 0) {
+        // console.log('update', $('#counter').html() > 0)
+        $("#seconds").html(pad(++secondCounter%60));
+        $("#minutes").html(pad(parseInt(secondCounter/60,10)));
+      }
+      return clearInterval(interval)
+    }
+    
+    $('#virus').one('click', function(e) {
+      // console.log('only once')
+      setInterval(updateTime, 1000);
+    })
+    
+      $("#virus").click(function(event) {
+        if (firstClickTime == null) {
+            firstClickTime = event.timeStamp;
         }
+    
+        $("#counter").html(function(i, val) {
+    
+          if (val>0) {
+            if (val==1) {
+              lastClickTime = event.timeStamp;
+              spendedTime = lastClickTime - firstClickTime;
+              $("#record_score").val(spendedTime.toFixed(3));
+              $('.app .row').hide();
+              $('#send_score_form').show();
+            }
+            return val-1;
+          }
+        });
       });
-    });
-  
-    $(document).ready(function (e) {
-      // var startAngle = 0;
-      var startAngle = 0;
-      var unit = 215;
-      var timer_started = false;
-      $('#send_score_form').hide();
-      $('#lvl-'+level).addClass('lvl-active');
-    });
-</script>
+    
+      $(document).ready(function (e) {
+        // var startAngle = 0;
+        var startAngle = 0;
+        var unit = 215;
+        var timer_started = false;
+        $('#send_score_form').hide();
+        $('#lvl-'+level).addClass('lvl-active');
+      });
+  </script>

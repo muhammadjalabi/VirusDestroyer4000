@@ -11,6 +11,9 @@ $mh_heart_green: #139972;
 $mh_red: #de1917;
 $mh_dark_red: #720d0f;
 
+a {
+  color: lighten($mh_red, 10) !important;
+}
 
 
 body {
@@ -46,11 +49,13 @@ svg:active {
 
 .lvl-indicator {
   background: lighten($mh_red, 10) !important;
-  color: white;
+  color: white !important;
 }
 .lvl-indicator:hover{
-  color: darken(white, 40);
+  color: darken(white, 40) !important;
 }
+
+
 
 .btn-outline-secondary {
   border-color: $mh_red !important;
@@ -135,9 +140,29 @@ svg:active {
 }
 
 
-
-
-
 .dyk_card{
   margin: 8px;
+}
+
+.highscore_records_link{
+  color: red !important;
+  text-decoration: none !important;
+}
+
+
+.btn-primary {
+  background: darken($mh_red, 5) !important;
+  color: white !important;
+  border-color: darken($mh_red, 5) !important;
+}
+.btn-primary:hover {
+  background: lighten($mh_red, 1) !important;
+  color: white !important;
+}
+.btn-outline-primary{
+  border-color: lighten($mh_red, 1) !important;
+}
+.btn-outline-primary:hover {
+  background: lighten($mh_red, 1) !important;
+  color: white !important;
 }
